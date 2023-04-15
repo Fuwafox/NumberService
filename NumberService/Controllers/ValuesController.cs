@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NumberService.Logic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace NumberService.Controllers
 {
@@ -9,17 +9,15 @@ namespace NumberService.Controllers
     public class ValuesController : ControllerBase
     {
 
+        Service service;
+        public ValuesController(Service service) => this.service = service;
 
-        static long x;
-        
+
         [HttpGet]
-        public long Get( long num) 
+        public long[] Get(long num)
         {
-            var temp = x;
-            x = num;
-            return temp;
+            service.Buffer.PushBack(num);
+            return service.Buffer.ToArray();
         }
-
-
     }
 }
