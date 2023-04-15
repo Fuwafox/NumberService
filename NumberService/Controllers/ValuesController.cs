@@ -15,9 +15,9 @@ namespace NumberService.Controllers
         [HttpGet]
         public long Get( long num) 
         {
-            Thread thread = new Thread(() => { x = num; });
-            thread.Start();
-            return x;
+            var temp = x;
+            x = num;
+            return temp;
         }
 
 
