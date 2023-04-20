@@ -9,15 +9,16 @@ namespace NumberService.Controllers
     public class ValuesController : ControllerBase
     {
 
-        Service service;
-        public ValuesController(Service service) => this.service = service;
+        Service _service;
+        public ValuesController(Service service) =>
+         this._service = service;
 
 
         [HttpGet]
-        public List<long> Get(long num)
+        public int[] Get(int num)
         {
-            service.Buffer.Insert(num);
-            return service.Buffer.ToList();
+            _service.Insert(num);
+            return _service.BufferS.ToArray();
         }
     }
 }
