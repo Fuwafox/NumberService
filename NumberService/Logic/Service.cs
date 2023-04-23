@@ -1,5 +1,6 @@
 ﻿namespace NumberService.Logic
 {
+    
     /// <summary>
     /// Класс для работы со структурой данных
     /// </summary>

@@ -2,6 +2,7 @@
 
 namespace NumberService.Logic
 {
+   
     /// <summary>
     /// Структура отвечает за логику добавления и вывода данных
     /// </summary>
