@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NumberService.Logic;
 
-
 namespace NumberService.Controllers
 {
     /// <summary>
@@ -18,13 +17,15 @@ namespace NumberService.Controllers
         /// <summary>
         /// Поле для логирования
         /// </summary>
-        private ILogger _logger;
+ 
+        private ILogger<ValuesController> _logger;
         /// <summary>
         /// Конструктор контроллера
         /// </summary>
         /// <param name="service"></param>
         /// <param name="logger"></param>
-        public ValuesController(Service service, ILogger<Service> logger)
+
+        public ValuesController(Service service, ILogger<ValuesController> logger)
         {
             _service = service;
             _logger = logger;
@@ -33,7 +34,7 @@ namespace NumberService.Controllers
         /// <summary>
         /// Метод  - запрос для добавления и вывода данных
         /// </summary>
-        /// <param name="num"></param>
+        /// <param name="num">число для добавления в массив</param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
@@ -45,11 +46,10 @@ namespace NumberService.Controllers
                 _service.Add(num);
                 return _service.Select();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, message: "Ошибка при добавлении или выводе данных");
-                return StatusCode(StatusCodes.Status500InternalServerError, value:"Ошибка при добавлении или выводе данных");
-
+                return StatusCode(StatusCodes.Status500InternalServerError, value: "Ошибка при добавлении или выводе данных");
             }
         }
     }

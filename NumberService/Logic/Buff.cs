@@ -5,21 +5,24 @@ namespace NumberService.Logic
     /// <summary>
     /// Структура отвечает за логику добавления и вывода данных
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">тип данных массива</typeparam>
     public struct Buff<T>
     {
         /// <summary>
         /// Массив хранящий данные
         /// </summary>
         private readonly T[] BufferS;
+
         /// <summary>
         /// Номер текущего элемента,куда добавляем данные
         /// </summary>
         private int _curr;
+
         /// <summary>
         /// Размер массива
         /// </summary>
         private readonly int _size;
+
         /// <summary>
         /// Затычка для предодвращения незапланированного изменения данных
         /// </summary>
@@ -39,15 +42,15 @@ namespace NumberService.Logic
         /// <summary>
         /// Проверка текущего индекса
         /// </summary>
-        /// <param name="curr"></param>
-        /// <param name="size"></param>
+        /// <param name="curr">текущий индекс для записи данных</param>
+        /// <param name="size">размер массива</param>
         /// <returns></returns>
         private static bool IsFool(int curr, int size) => curr == size - 1;
 
         /// <summary>
         /// Добавление в массив
         /// </summary>
-        /// <param name="num"></param>
+        /// <param name="num">данные добавляемые в массив</param>
         public void Add(T num)
         {
             lock (_obLock)
