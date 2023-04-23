@@ -5,7 +5,7 @@ namespace NumberService.Logic
     public struct Buff<T>
     {
         public T[] BufferS;
-        private static int _curr;
+        private int _curr;
         private readonly int _size;
 
         public Buff(int size)
