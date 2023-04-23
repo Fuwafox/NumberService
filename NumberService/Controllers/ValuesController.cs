@@ -8,16 +8,14 @@ namespace NumberService.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-
         readonly Service _service;
-        public ValuesController(Service service) =>
-         this._service = service;
-
+        
+        public ValuesController(Service service) => _service = service;
 
         [HttpGet]
         public int[] Get(int num)
         {
-            _service.Insert(num);
+            _service.cl.Insert(num);
             return _service.cl.BufferS;
         }
     }
