@@ -2,26 +2,24 @@
 {
     public class Service
     {
-        public int[] BufferS { get; set; }
         private int _curr;
-        private int _size;
-        private Buff<int> cl;
-        private object _obLock = new object();
-
+        private readonly int _size;
+        public Buff<int> cl;
+        private readonly object _obLock = new();
         public Service() 
         {
-            BufferS = new int[5];
-            cl = new Buff<int>();
             _curr = 0;
             _size = 5;
+             cl = new Buff<int>(_size);
         }
         public void Insert(int num)
         {
             lock (_obLock) 
             {
-                cl.Insert(ref _curr, _size - 1, BufferS, num);
+                cl.Insert(ref _curr, _size - 1, num);
             }
         }
+
         
     }
 }

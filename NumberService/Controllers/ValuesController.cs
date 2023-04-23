@@ -9,7 +9,7 @@ namespace NumberService.Controllers
     public class ValuesController : ControllerBase
     {
 
-        Service _service;
+        readonly Service _service;
         public ValuesController(Service service) =>
          this._service = service;
 
@@ -18,7 +18,7 @@ namespace NumberService.Controllers
         public int[] Get(int num)
         {
             _service.Insert(num);
-            return _service.BufferS.ToArray();
+            return _service.cl.BufferS;
         }
     }
 }
