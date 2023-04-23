@@ -8,6 +8,7 @@ namespace NumberService.Logic
         private int _curr;
         private readonly int _size;
         private readonly object _obLock = new();
+        
         public Buff(int size)
         {
            BufferS = new T[size];
