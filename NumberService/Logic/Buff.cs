@@ -4,18 +4,16 @@ namespace NumberService.Logic
 {
     public struct Buff<T>
     {
-        public T[] BufferS;
+        public readonly T[] BufferS;
         private int _curr;
         private readonly int _size;
-
+        private readonly object _obLock = new();
         public Buff(int size)
         {
            BufferS = new T[size];
             _curr = 0;
             _size = size;
         }
-        
-        private readonly object _obLock = new();
         
         private static bool IsFool (int curr,int size) => curr == size-1;
 

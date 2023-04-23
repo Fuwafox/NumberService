@@ -15,8 +15,8 @@ namespace NumberService.Controllers
         [HttpGet]
         public int[] Get(int num)
         {
-            _service.cl.Insert(num);
-            return _service.cl.BufferS;
+            _service.Add(num);
+            return _service.Select();
         }
     }
 }
